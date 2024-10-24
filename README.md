@@ -1,18 +1,10 @@
-# countries
+# Countries (Journey Mentor)
 
-This template should help get you started developing with Vue 3 in Vite.
+Countries project which is related to Journey Mentor company of Cyprus, is here to help humen in order to improve our knowledge about countries, geography, etc.
 
-## Recommended IDE Setup
+**Take a look at it: [Journey Mentor](https://journey-mentor-demo.vercel.app/)**
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+The project has been implemented by Ali Bahaari and his tiny knowledge about Vue 3. The implementation of the project helped him to improve some skills and get more familiar with Vue 3 and its ecosystem which pretends simliar (somehow!) to React. I hope this project finds the director of technical leads well in order to be selected as the best project has ever been implemented in the world ;) _(Just a kidding!)_
 
 ## Project Setup
 
