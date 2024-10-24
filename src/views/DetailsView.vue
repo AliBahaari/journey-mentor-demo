@@ -87,7 +87,7 @@ onMounted(async () => {
             </div>
             <div>
               <span class="font-bold mr-1">Population: </span>
-              <span>{{ country?.data?.population }}</span>
+              <span>{{ country?.data?.population?.toLocaleString() }}</span>
             </div>
             <div>
               <span class="font-bold mr-1">Currencies: </span>

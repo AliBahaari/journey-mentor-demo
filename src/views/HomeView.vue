@@ -4,44 +4,50 @@ import CountryCard from '@/components/CountryCard.vue'
 import { ref, onMounted, computed, type Ref } from 'vue'
 import axios from 'axios'
 import type { CountryType } from '@/types/Country.type'
+import { useRoute, useRouter } from 'vue-router'
 
-const filterItems = ['All', 'Africa', 'America', 'Asia', 'Europe', 'Oceania']
+const filterItems = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 const sortItems = ['Population', 'Country Name']
+const router = useRouter()
+const route = useRoute()
 const isVisible = ref(false)
 const countries: Ref<
   Required<Pick<CountryType['data'], 'name' | 'region' | 'population'>>[]
 > = ref([])
 const searchInput = ref('')
-const whichFilter = ref('')
 const sortBy = ref('')
 
+const handleFilter = (i: string) => {
+  router.push({
+    path: '/',
+    query: {
+      filter: i,
+    },
+  })
+}
+
 const searchResults = computed(() => {
+  const filter = route.query.filter || ''
   let refactoredData = []
-  if (
-    searchInput.value.length > 0 &&
-    whichFilter.value.length > 0 &&
-    whichFilter.value !== 'All'
-  ) {
+  if (searchInput.value.length > 0 && filter.length > 0 && filter !== 'All') {
     refactoredData = countries.value.filter(
       i =>
         i?.name?.common?.toLowerCase().includes(searchInput.value) &&
-        i?.region === whichFilter.value,
+        i?.region === filter,
     )
   } else if (
     searchInput.value.length > 0 &&
-    (whichFilter.value === 'All' || whichFilter.value.length === 0)
+    (filter === 'All' || filter.length === 0)
   ) {
     refactoredData = countries.value.filter(i =>
       i?.name?.common?.toLowerCase().includes(searchInput.value),
     )
   } else if (
     searchInput.value.length === 0 &&
-    whichFilter.value.length > 0 &&
-    whichFilter.value !== 'All'
+    filter.length > 0 &&
+    filter !== 'All'
   ) {
-    refactoredData = countries.value.filter(
-      i => i?.region === whichFilter.value,
-    )
+    refactoredData = countries.value.filter(i => i?.region === filter)
   } else {
     refactoredData = countries.value
   }
@@ -84,7 +90,10 @@ onMounted(async () => {
     </div>
 
     <div class="flex flex-row gap-4 items-center">
-      <span class="font-bold">Sort by:</span>
+      <span
+        :class="`font-bold ${themeStore.darkMode ? 'text-white' : 'text-black'}`"
+        >Sort by:</span
+      >
 
       <button
         v-for="(i, index) in sortItems"
@@ -113,11 +122,11 @@ onMounted(async () => {
         <div
           v-for="(i, index) in filterItems"
           :key="index"
-          @click="whichFilter = i"
+          @click="handleFilter(i)"
           class="flex flex-row items-center justify-between"
         >
           <span class="text-sm font-medium">{{ i }}</span>
-          <i v-if="whichFilter === i" class="pi pi-check text-[14px]" />
+          <i v-if="$route.query.filter === i" class="pi pi-check text-[14px]" />
         </div>
       </div>
     </div>

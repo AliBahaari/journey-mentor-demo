@@ -7,7 +7,7 @@ import { themeStore } from './stores/theme'
 <template>
   <div
     :class="`
-      min-h-screen ${themeStore.darkMode ? 'bg-veryDarkBlueDarkMode' : 'bg-veryLightGray'}
+      pb-10 min-h-screen ${themeStore.darkMode ? 'bg-veryDarkBlueDarkMode' : 'bg-veryLightGray'}
     `"
   >
     <NavbarComponent />

@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { themeStore } from '@/stores/theme'
-import { defineProps } from 'vue'
-import { RouterLink } from 'vue-router'
 
 defineProps({
   data: Object,
@@ -22,7 +20,7 @@ defineProps({
       </div>
 
       <div class="p-6">
-        <span class="font-bold text-xl mb-5 block">{{
+        <span class="font-bold text-xl mb-5 block test">{{
           data?.name?.common
         }}</span>
         <div>
